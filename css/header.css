@@ -1,0 +1,106 @@
+/* Styles par défaut pour le header (s'applique à toutes les tailles d'écran) */
+header {
+    background-image: url('../assets/templates/Header.png');
+    background-size: cover; /* Couvre toute la zone visible en gardant les proportions */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    height: 667px; /* Hauteur initiale*/
+}
+
+header img {
+    margin-top: 51px;
+    margin-left: 69px;
+    width: 207px;
+}
+
+.titleAndSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #FFD15B;
+    text-align: center;
+    width: 700px;
+    justify-content: center;
+    font-size: 44px;
+    font-weight: 400;
+    margin-top: 165px;
+}
+
+.formSearch {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    position: relative;
+}
+
+#mainsearch {
+    width: 100%;
+    height: 72px;
+    border-radius: 11px;
+    padding-left: 35px;
+    font-size: 16px;
+}
+
+#mainsearch::-webkit-search-cancel-button {
+    display: none; /*cache la croix généée par défaut sous chrome uniquement (sous fireFox il n'y a pas de croix automatique, il faut la créer)*/
+}
+
+.formSearch img {
+    position: absolute;
+    width: 13px;
+    right: 85px;
+    bottom: 29.5px;
+}
+
+button {
+    background-color: #1B1B1B;
+    background-image: url(../assets/icons/loupe_blanche.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-style: none;
+    border-radius: 10px;
+    width: 51px;
+    height: 52px;
+    position: absolute;
+    right: 10px;
+}
+
+button:hover {
+    background-color: #FFD15B;
+    background-image: url(../assets/icons/loupe_noire.svg);
+}
+
+/* Pour les écrans plus de 1440px */
+@media (min-width: 1441px) {
+
+}
+
+/* Pour les écrans plus petits */
+@media (max-width: 808px) {
+    header {
+        height: 355px;
+    }
+
+    header img {
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 207px;
+    }
+
+    h1 {
+        width: 95%;
+        font-size: 26px;
+        margin-top: 50px;
+    }
+
+    .formSearch {
+        width: 90%;
+    }
+
+    #mainsearch {
+        padding-left: 10px;
+    }
+}

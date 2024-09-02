@@ -1,0 +1,82 @@
+article{
+    width: 380px;
+    position: relative;
+}
+
+article img {
+    width: 100%;
+    height: 253px;
+    object-fit: cover;
+    border-radius: 21px 21px 0px 0px;
+    vertical-align: middle;
+}
+
+article span {
+    position: absolute;
+    top : 21px;
+    right: 22px;
+    font-size: 12px;
+    background-color: #FFD15B;
+    width: 65px;
+    height: 26px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zoneRecipe {
+    background-color: white;
+    border-radius: 0px 0px 21px 21px;
+    margin: 0;
+    padding: 25px 25px 45px 25px;
+}
+
+h2 {
+    font-family: 'Anton';
+    font-size: 18px;
+    color: #000000;
+}
+
+h3 {
+    font-family: 'Manrope';
+    font-size: 12px;
+    font-weight: 400;
+    color: #7A7A7A;
+    margin-top: 32px;
+    margin-bottom: 25px;
+}
+
+.zoneIngredients {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.ingredient {
+    width: 155px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+}
+
+.ingredientName {
+    font-size: 14px;
+    color: #1B1B1B;
+    margin: 0;
+    padding: 0;
+}
+
+.ingredientQte {
+    font-size: 14px;
+    color: #7A7A7A;
+    margin: 0;
+    padding: 0;
+}
+
+/* Pour les écrans plus petits */
+@media (max-width: 808px) {
+    article{
+        width: 100%;
+    }
+}

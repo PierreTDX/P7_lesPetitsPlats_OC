@@ -1,0 +1,39 @@
+@import url("header.css");
+@import url("carte.css");
+
+/* Définition des polices locales */
+/* Manrope */
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope/static/Manrope-Regular.ttf') format('truetype'),
+         url('../assets/fonts/Manrope/static/Manrope-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Anton */
+@font-face {
+    font-family: 'Anton';
+    src: url('../assets/fonts/Anton/Anton-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    background-color: #ededed;
+}
+
+h1 {
+    font-family: 'Anton', sans-serif;
+}
+
+.zoneCartes {
+    display: flex;
+    flex-wrap: wrap;
+    gap : 66px 48px;
+    justify-content: center;
+    margin-bottom: 200px;
+}
