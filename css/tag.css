@@ -1,0 +1,14 @@
+.tag {
+    width: 155px;
+    height: 56px;
+    background-color: #FFD15B ;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-family: 'Manrope';
+    font-size: 16px;
+    font-weight: 500;
+}

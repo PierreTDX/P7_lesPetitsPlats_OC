@@ -1,6 +1,9 @@
 article{
     width: 380px;
     position: relative;
+    box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+    border-radius: 21px;
+    height: 100%;
 }
 
 article img {
@@ -35,6 +38,7 @@ article span {
 h2 {
     font-family: 'Anton';
     font-size: 18px;
+    font-weight: 400;
     color: #000000;
 }
 
@@ -45,6 +49,14 @@ h3 {
     color: #7A7A7A;
     margin-top: 32px;
     margin-bottom: 25px;
+}
+
+.truncate {
+    display: -webkit-box; /* Utilisé pour définir un conteneur de boîte flexible */
+    -webkit-box-orient: vertical; /* Définit l'orientation de la boîte flexible en vertical */
+    -webkit-line-clamp: 4; /* Limite le nombre de lignes à 4 */
+    overflow: hidden; /* Masque le texte débordant */
+    text-overflow: ellipsis; /* Ajoute des points de suspension (...) pour le texte tronqué */
 }
 
 .zoneIngredients {
@@ -75,7 +87,7 @@ h3 {
 }
 
 /* Pour les écrans plus petits */
-@media (max-width: 808px) {
+@media (max-width: 828px) {
     article{
         width: 100%;
     }

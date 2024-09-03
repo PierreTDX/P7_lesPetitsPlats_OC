@@ -5,6 +5,7 @@ header {
     background-position: center; /* Centre l'image */
     background-repeat: no-repeat; /* Empêche la répétition de l'image */
     height: 667px; /* Hauteur initiale*/
+    /* width: 100%; */
 }
 
 header img {
@@ -79,7 +80,7 @@ button:hover {
 }
 
 /* Pour les écrans plus petits */
-@media (max-width: 808px) {
+@media (max-width: 828px) {
     header {
         height: 355px;
     }

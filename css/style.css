@@ -1,4 +1,6 @@
 @import url("header.css");
+@import url("menu.css");
+@import url("tag.css");
 @import url("carte.css");
 
 /* Définition des polices locales */
@@ -30,10 +32,67 @@ h1 {
     font-family: 'Anton', sans-serif;
 }
 
+.zoneSelectsAndText {
+    width: calc(100% - 200px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 21px;
+    margin-bottom: 21px;
+}
+
+.selects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.text {
+    font-family: 'Anton';
+    font-size: 21px;
+    font-weight: 400;
+    width: 130px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.zoneTag {
+    width: calc(100% - 200px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 21px;
+    margin-bottom: 21px;  
+}
+
 .zoneCartes {
     display: flex;
     flex-wrap: wrap;
     gap : 66px 48px;
     justify-content: center;
     margin-bottom: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* max-width: 1440px; à activer si*/
+}
+
+/* Pour les écrans plus petits */
+@media (max-width: 828px) {
+    .zoneSelectsAndText{
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .zoneTag {
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+  
+    }
 }
