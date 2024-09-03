@@ -4,12 +4,16 @@
     height: 100%;
 }
 
+.menuClose {
+    /*rien*/
+}
+
 .zoneMenu {
     background-color: white;
     position: absolute;
     z-index: 10;
     border-radius: 0px 0px 11px 11px;
-    /* display: none; */
+    display: none;
 }
 
 .titleSelect {
@@ -113,4 +117,15 @@
 
 .list:hover {
     background-color: #FFD15B;
+}
+
+/*class ajoutée avec le JS openMenu pour tourner le chevron*/
+.rotateOpen {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease; /* Ajoute une transition douce pour la rotation */
+}
+
+.rotateClose {
+    transform: rotate(360deg);
+    transition: transform 0.3s ease; /* Ajoute une transition douce pour la rotation */
 }
