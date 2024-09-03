@@ -54,6 +54,7 @@ h1 {
     width: 13px;
     right: 85px;
     bottom: 29.5px;
+    cursor: pointer;
 }
 
 button {
@@ -67,6 +68,7 @@ button {
     height: 52px;
     position: absolute;
     right: 10px;
+    cursor: pointer;
 }
 
 button:hover {

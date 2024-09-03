@@ -1,4 +1,18 @@
-nav {
+.menuOpen {
+    background-color: white;
+    border-radius: 11px 11px 0px 0px;
+    height: 100%;
+}
+
+.zoneMenu {
+    background-color: white;
+    position: absolute;
+    z-index: 10;
+    border-radius: 0px 0px 11px 11px;
+    /* display: none; */
+}
+
+.titleSelect {
     width: 155px;
     height: 56px;
     background-color: white;
@@ -11,4 +25,87 @@ nav {
     font-family: 'Manrope';
     font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
+}
+
+.formSearchSelects {
+    display: flex;
+    position: relative;
+}
+
+#searchSelect {
+    width: 155px;
+    height: 36px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding-left: 8px;
+    padding-right: 40px;
+    border: solid 1px;
+    border-color: #C6C6C6;
+    border-radius: 2px;
+}
+
+#searchSelect::-webkit-search-cancel-button {
+    display: none; /*cache la croix généée par défaut sous chrome uniquement (sous fireFox il n'y a pas de croix automatique, il faut la créer)*/
+}
+
+.miniCross {
+    position: absolute;
+    right: 48px;
+    top: 14px;
+    cursor: pointer;
+}
+
+.miniMagnif {
+    position: absolute;
+    right: 25px;
+    top: 11px;
+    cursor: pointer;
+}
+
+.zoneSelecteds {
+    background-color: #FFD15B;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.selected {
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.selected:hover {
+    font-weight: 700;
+}
+
+.roundCross {
+    display: none;
+}
+
+.selected:hover .roundCross {
+    display: block;
+}
+
+.zoneList {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    max-height: 148px; /* Limite la hauteur pour afficher uniquement 4 ingrédients */
+    overflow-y: auto; /* Ajoute un ascenseur vertical pour le défilement */
+}
+
+.list {
+    height: 37px;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    cursor: pointer;
+}
+
+.list:hover {
+    background-color: #FFD15B;
 }
