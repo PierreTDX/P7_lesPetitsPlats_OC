@@ -1,5 +1,4 @@
 export function selectItem() {
-    console.log("selectItem");
     document.addEventListener('DOMContentLoaded', () => {
         function moveToSelected(event) {
             event.stopPropagation(); // Arrêter la propagation de l'événement
