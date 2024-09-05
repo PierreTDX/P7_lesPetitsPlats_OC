@@ -1,3 +1,4 @@
+export function openMenu () {
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner tous les éléments avec la classe 'titleSelect'
     const titleSelects = document.querySelectorAll('.titleSelect');
@@ -73,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
+}
 
 /* version d'orignie : peut ouvrir les 3 menus et les refermer individuellement seulement
 (ne se ferme pas si je clique en dehors du menu)
