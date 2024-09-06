@@ -11,6 +11,9 @@ export function deleteTag() {
 
                 // Appelle la fonction pour gérer la suppression dans zoneSelecteds et ajout à zoneList
                 handleTagRemoval(tagText);
+
+                // Met à jour immédiatement la zoneSelecteds
+                updateZoneSelecteds(tagText);
             }
         }
     });
@@ -79,4 +82,21 @@ function addToZoneList(tagText, section) {
         // Ajoute le nouvel élément à la zoneList
         zoneList.appendChild(newTag);
     }
+}
+
+// Fonction pour mettre à jour zoneSelecteds après la suppression
+function updateZoneSelecteds(tagText) {
+    const sections = document.querySelectorAll('.zoneSelectsAndText .menuOpen');
+    sections.forEach((section) => {
+        const zoneSelecteds = section.querySelector('.zoneSelecteds');
+        const selectedItems = zoneSelecteds.querySelectorAll('.selected');
+
+        selectedItems.forEach((item) => {
+            const selectedWord = item.querySelector('.selectedWord').textContent;
+            if (selectedWord === tagText) {
+                item.remove();
+                addToZoneList(tagText, section); // Ajoute l'élément supprimé à zoneList
+            }
+        });
+    });
 }
