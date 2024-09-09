@@ -39,6 +39,7 @@ article span {
     border-radius: 0px 0px 21px 21px;
     margin: 0;
     padding: 25px 25px 45px 25px;
+    min-height: 440px;
 }
 
 h2 {
@@ -97,4 +98,9 @@ h3 {
     article{
         width: 100%;
     }
+
+    .zoneRecipe {
+        min-height: auto;
+    }
+    
 }
