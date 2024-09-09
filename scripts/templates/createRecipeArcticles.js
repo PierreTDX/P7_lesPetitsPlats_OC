@@ -19,7 +19,7 @@ export async function createRecipeArticles(recipesData) {
 
         article.innerHTML = `
             <span>${recipe.time} min</span>
-            <img src="assets/pictures/recipes/${recipe.image}" alt="image recette ${recipe.id}">
+            <img src="assets/pictures/recipes/${recipe.image}" alt="image recette ${recipe.name}">
             <div class="zoneRecipe">
                 <h2>${recipe.name}</h2>
                 <div>
