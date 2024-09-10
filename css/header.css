@@ -50,11 +50,16 @@ h1 {
 }
 
 .formSearch img {
+    display: none;
     position: absolute;
     width: 13px;
     right: 85px;
     bottom: 29.5px;
     cursor: pointer;
+}
+
+.formSearch img.visible {
+    display: block;
 }
 
 button {

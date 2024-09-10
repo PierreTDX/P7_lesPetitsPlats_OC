@@ -5,6 +5,7 @@ import { createTag } from "../utils/createTag.js";
 import { deleteTag } from "../utils/deleteTag.js";
 import { counterRecipes } from "../utils/counterRecipes.js";
 import { handleSearchInput } from "../utils/filterRecipes.js";
+import { ClearButtonMainSearch } from "../utils/ClearButtonMainSearch.js";
 
 const recipesApi = new Api("./data/recipes.json");
 
@@ -15,6 +16,8 @@ async function init() {
     try {
         recipesData = await recipesApi.get();
         console.log("dans index.js", recipesData);
+
+        ClearButtonMainSearch();
 
         // Afficher toutes les recettes initialement
         handleSearchInput({ target: { value: "" } }, recipesData);

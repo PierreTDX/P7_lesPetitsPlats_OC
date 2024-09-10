@@ -4,6 +4,8 @@ export function selectItem() {
         document.querySelectorAll('.zoneMenu').forEach((zoneMenu) => {
             const listContainer = zoneMenu.querySelector('.zoneList');
             const selectedContainer = zoneMenu.querySelector('.zoneSelecteds');
+            // Vider le contenu de "zoneSelecteds" avant de le remplir
+            selectedContainer.innerHTML = '';
 
             // Utilisation de la délégation d'événements pour la zoneList
             listContainer.addEventListener('click', (event) => {

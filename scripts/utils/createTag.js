@@ -1,7 +1,12 @@
 export function createTag () {
     document.addEventListener('DOMContentLoaded', function() {
+        // Vider la zone "zoneTag" de le remplir de tag
+        const zoneTag = document.querySelector('.zoneTag');
+        zoneTag.innerHTML = '';
+
         // Fonction pour ajouter un nouveau tag
         function addTag(text) {
+
             // Créer le nouvel élément de tag
             const tag = document.createElement('div');
             tag.classList.add('tag');
