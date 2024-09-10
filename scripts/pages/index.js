@@ -6,7 +6,7 @@ import { deleteTag } from "../utils/deleteTag.js";
 import { counterRecipes } from "../utils/counterRecipes.js";
 import { handleSearchInput, ListenerSearchEvents } from "../utils/filterRecipes.js";
 import { ClearButtonMainSearch } from "../utils/ClearButtonMainSearch.js";
-import { setupFilterBySelectedItems } from "../utils/filterBySelectedItems.js";
+import { FilterBySelectedItems } from "../utils/filterBySelectedItems.js";
 
 const recipesApi = new Api("./data/recipes.json");
 
@@ -29,7 +29,7 @@ async function init() {
         ListenerSearchEvents(recipesData);
 
         // Configurer les événements de filtrage par éléments sélectionnés
-        setupFilterBySelectedItems(recipesData);
+        FilterBySelectedItems();
 
     } catch (error) {
         console.error("Erreur lors de l'initialisation de l'application :", error);
