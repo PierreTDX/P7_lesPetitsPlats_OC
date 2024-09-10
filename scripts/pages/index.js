@@ -4,44 +4,37 @@ import { selectItem } from "../utils/selectItemMenu.js";
 import { createTag } from "../utils/createTag.js";
 import { deleteTag } from "../utils/deleteTag.js";
 import { counterRecipes } from "../utils/counterRecipes.js";
-import { handleSearchInput } from "../utils/filterRecipes.js";
+import { handleSearchInput, ListenerSearchEvents } from "../utils/filterRecipes.js";
 import { ClearButtonMainSearch } from "../utils/ClearButtonMainSearch.js";
+import { setupFilterBySelectedItems } from "../utils/filterBySelectedItems.js";
 
 const recipesApi = new Api("./data/recipes.json");
 
 let recipesData = [];
+console.log("avant init index.js", recipesData);
+
 
 // Fonction d'initialisation de l'application
 async function init() {
     try {
         recipesData = await recipesApi.get();
-        console.log("dans index.js", recipesData);
+        console.log("début init index.js", recipesData);
 
         ClearButtonMainSearch();
 
         // Afficher toutes les recettes initialement
         handleSearchInput({ target: { value: "" } }, recipesData);
 
-        // Ajouter un écouteur d'événements pour la barre de recherche
-        const searchInput = document.getElementById('mainsearch');
-        searchInput.addEventListener('input', function(event) {
-            handleSearchInput(event, recipesData);
-        });
+        // Ecouter les événements de recherche
+        ListenerSearchEvents(recipesData);
 
-        // Ajouter un écouteur d'événements pour le bouton de recherche
-        const form = document.querySelector(".formSearch");
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Empêcher la soumission du formulaire
-            handleSearchInput({ target: searchInput }, recipesData); // Effectuer la recherche sur la soumission
-        
-            // Faire défiler la page vers le haut pour afficher zoneCartes
-            //document.getElementById('zoneSelectsAndText').scrollIntoView({ behavior: 'smooth' });
-        });
+        // Configurer les événements de filtrage par éléments sélectionnés
+        setupFilterBySelectedItems(recipesData);
 
     } catch (error) {
         console.error("Erreur lors de l'initialisation de l'application :", error);
     }
-}
+};
 
 // Appel des fonctions lors de l'initialisation
 init();
@@ -52,4 +45,3 @@ selectItem();
 createTag();
 deleteTag();
 counterRecipes();
-
