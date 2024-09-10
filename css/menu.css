@@ -37,7 +37,7 @@
     position: relative;
 }
 
-#searchSelect {
+.searchSelect {
     width: 155px;
     height: 36px;
     margin-left: 16px;
@@ -50,8 +50,8 @@
     border-radius: 2px;
 }
 
-#searchSelect::-webkit-search-cancel-button {
-    display: none; /*cache la croix généée par défaut sous chrome uniquement (sous fireFox il n'y a pas de croix automatique, il faut la créer)*/
+.searchSelect::-webkit-search-cancel-button {
+    display: none; /*cache la croix générée par défaut sous chrome uniquement (sous fireFox il n'y a pas de croix automatique, il faut la créer)*/
 }
 
 .miniCross {
