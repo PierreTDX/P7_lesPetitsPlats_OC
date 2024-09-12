@@ -1,14 +1,18 @@
 import { createRecipeArticles } from "../templates/createRecipeArcticles.js";
 import { populateZoneLists } from "./populateZoneLists.js";
+import { FilterBySelectedItems } from "./filterBySelectedItems.js";
+
+// Exporter la variable filteredRecipes
+export let filteredRecipes = [];
 
 // Fonction pour filtrer les recettes en fonction de la recherche
 function filterRecipes(recipes, query) {
-    console.log("début filterRecipes",recipes);
+    console.log("début filterRecipes", recipes);
     const queryWords = query.toLowerCase().split(" ").filter(function(word) {
         return word.length >= 3; // Ne garder que les mots de 3 caractères ou plus
     });
 
-    const filteredRecipes = recipes.filter(function(recipe) {
+    filteredRecipes = recipes.filter(function(recipe) {
         const name = recipe.name.toLowerCase();
         const description = recipe.description.toLowerCase();
         const ingredients = recipe.ingredients.map(function(ing) {
@@ -29,7 +33,7 @@ function filterRecipes(recipes, query) {
                    ustensils.includes(word);
         });
     });
-    console.log("fin filterRecipes",filteredRecipes);
+    console.log("fin filterRecipes", filteredRecipes);
     return filteredRecipes;
 }
 
@@ -46,9 +50,11 @@ export function handleSearchInput(event, allRecipes) {
         const filteredRecipes = filterRecipes(allRecipes, query);
         console.log("dans handleSearchInput filteredRecipes",filteredRecipes);
 
+        FilterBySelectedItems();
         updateRecipeDisplay(filteredRecipes);
 
     } else {
+        FilterBySelectedItems();
         updateRecipeDisplay(allRecipes);
     }
 }

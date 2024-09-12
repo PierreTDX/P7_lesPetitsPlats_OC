@@ -10,7 +10,7 @@ import { FilterBySelectedItems } from "../utils/filterBySelectedItems.js";
 
 const recipesApi = new Api("./data/recipes.json");
 
-let recipesData = [];
+export let recipesData = [];
 console.log("avant init index.js", recipesData);
 
 
@@ -28,8 +28,7 @@ async function init() {
         // Ecouter les événements de recherche
         ListenerSearchEvents(recipesData);
 
-        // Configurer les événements de filtrage par éléments sélectionnés
-        FilterBySelectedItems();
+
 
     } catch (error) {
         console.error("Erreur lors de l'initialisation de l'application :", error);
@@ -45,3 +44,6 @@ selectItem();
 createTag();
 deleteTag();
 counterRecipes();
+
+// Configurer les événements de filtrage par éléments sélectionnés
+// FilterBySelectedItems();
