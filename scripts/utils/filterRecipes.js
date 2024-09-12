@@ -33,6 +33,7 @@ function filterRecipes(recipes, query) {
                    ustensils.includes(word);
         });
     });
+
     console.log("fin filterRecipes", filteredRecipes);
     return filteredRecipes;
 }
@@ -50,11 +51,11 @@ export function handleSearchInput(event, allRecipes) {
         const filteredRecipes = filterRecipes(allRecipes, query);
         console.log("dans handleSearchInput filteredRecipes",filteredRecipes);
 
-        FilterBySelectedItems();
+        // FilterBySelectedItems();
         updateRecipeDisplay(filteredRecipes);
 
     } else {
-        FilterBySelectedItems();
+        // FilterBySelectedItems();
         updateRecipeDisplay(allRecipes);
     }
 }

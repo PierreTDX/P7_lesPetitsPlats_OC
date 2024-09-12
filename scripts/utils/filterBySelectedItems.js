@@ -4,8 +4,8 @@ import { updateRecipeDisplay } from "./filterRecipes.js";
 
 // Fonction pour filtrer les recettes en fonction des éléments sélectionnés
 export function FilterBySelectedItems() {
-    console.log("Données de recettes avant le 1er tri :", recipesData);
-    console.log("Recettes filtrées avant le second tri :", filteredRecipes);
+    console.log("Recettes si pas de 1er tri :", recipesData);
+    console.log("Recettes filtrées au 1er tri :", filteredRecipes);
 
     // Choisir la source de données en fonction de l'état de filteredRecipes
     const recipesToFilter = filteredRecipes.length > 0 ? filteredRecipes : recipesData;
@@ -25,7 +25,7 @@ export function FilterBySelectedItems() {
         const ustensils = recipe.ustensils.map(ust => ust.toLowerCase());
 
         // Vérifier si la recette contient tous les éléments sélectionnés
-        const containsAllIngredients = selectedIngredients.every(ingredient => ingredients.includes(ingredient));
+        const containsAllIngredients = selectedIngredients.length === 0 || selectedIngredients.every(ingredient => ingredients.includes(ingredient));
         const containsAllAppliances = selectedAppliances.length === 0 || selectedAppliances.includes(appliance);
         const containsAllUstensils = selectedUstensils.length === 0 || selectedUstensils.every(ustensil => ustensils.includes(ustensil));
 
