@@ -81,3 +81,5 @@ export function searchItems() {
         button.addEventListener('click', handleClearClick);
     });
 }
+
+// nouvelle ligne pour recharger le fichier
