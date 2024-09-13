@@ -55,10 +55,15 @@
 }
 
 .miniCross {
+    display: none;
     position: absolute;
     right: 48px;
     top: 14px;
     cursor: pointer;
+}
+
+.miniCross.visible {
+    display: block;
 }
 
 .miniMagnif {
@@ -84,6 +89,15 @@
 
 .selected:hover {
     font-weight: 700;
+}
+
+.selectedWord {
+    /* dans le cas ou l'ingrédient est trop long*/
+    width: 135px;
+    white-space: nowrap; /* Empêche le texte de s'étendre sur plusieurs lignes */
+    overflow: hidden; /* Cache le texte qui dépasse la largeur de l'élément */
+    text-overflow: ellipsis; /* Ajoute des points de suspension à la fin du texte tronqué */
+    
 }
 
 .roundCross {
