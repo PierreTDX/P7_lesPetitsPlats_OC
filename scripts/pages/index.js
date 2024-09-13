@@ -5,9 +5,9 @@ import { createTag } from "../utils/createTag.js";
 import { deleteTag } from "../utils/deleteTag.js";
 import { counterRecipes } from "../utils/counterRecipes.js";
 import { handleSearchInput, ListenerSearchEvents } from "../utils/filterRecipes.js";
-import { ClearButtonMainSearch } from "../utils/ClearButtonMainSearch.js";
+import { clearButtonMainSearch } from "../utils/clearButtonMainSearch.js";
 import { FilterBySelectedItems } from "../utils/filterBySelectedItems.js";
-import { filterItems } from "../utils/filterItems.js";
+import { searchItems } from "../utils/searchItems.js";
 
 const recipesApi = new Api("./data/recipes.json");
 
@@ -21,7 +21,7 @@ async function init() {
         recipesData = await recipesApi.get();
         console.log("début init index.js", recipesData);
 
-        ClearButtonMainSearch();
+        clearButtonMainSearch();
 
         // Afficher toutes les recettes initialement
         handleSearchInput({ target: { value: "" } }, recipesData);
@@ -45,4 +45,4 @@ selectItem();
 createTag();
 deleteTag();
 counterRecipes();
-filterItems();
+searchItems();

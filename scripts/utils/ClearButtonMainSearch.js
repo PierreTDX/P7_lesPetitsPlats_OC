@@ -1,4 +1,4 @@
-export function ClearButtonMainSearch() {
+export function clearButtonMainSearch() {
     const searchInput = document.getElementById('mainsearch');
     const crossIcon = document.querySelector('.formSearch img');
 

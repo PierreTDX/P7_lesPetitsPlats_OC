@@ -7,6 +7,11 @@ export function populateZoneLists(recipesData) {
     const applianceZone = document.querySelector('.zoneList.appliance');
     const ustensilZone = document.querySelector('.zoneList.ustensils');
 
+    // Récupérer les éléments sélectionnés
+    const selectedIngredients = new Set([...document.querySelectorAll('.zoneSelecteds.ingredients .selectedWord')].map(el => el.textContent.toLowerCase()));
+    const selectedAppliances = new Set([...document.querySelectorAll('.zoneSelecteds.appliance .selectedWord')].map(el => el.textContent.toLowerCase()));
+    const selectedUstensils = new Set([...document.querySelectorAll('.zoneSelecteds.ustensils .selectedWord')].map(el => el.textContent.toLowerCase()));
+
     // Vider les zones de liste avant de les remplir
     ingredientZone.innerHTML = '';
     applianceZone.innerHTML = '';
@@ -39,10 +44,10 @@ export function populateZoneLists(recipesData) {
         });
     });
 
-    // Convertir les ensembles en tableaux et les trier par ordre alphabétique
-    const sortedIngredients = Array.from(ingredientsSet).sort();
-    const sortedAppliances = Array.from(appliancesSet).sort();
-    const sortedUstensils = Array.from(ustensilsSet).sort();
+    // Convertir les ensembles en tableaux, retirer les éléments sélectionnés, et les trier par ordre alphabétique
+    const sortedIngredients = Array.from(ingredientsSet).filter(item => !selectedIngredients.has(item)).sort();
+    const sortedAppliances = Array.from(appliancesSet).filter(item => !selectedAppliances.has(item)).sort();
+    const sortedUstensils = Array.from(ustensilsSet).filter(item => !selectedUstensils.has(item)).sort();
 
     // Créer les éléments HTML pour les ingrédients
     sortedIngredients.forEach(function(ingredient) {
