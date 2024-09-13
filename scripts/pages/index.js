@@ -7,6 +7,7 @@ import { counterRecipes } from "../utils/counterRecipes.js";
 import { handleSearchInput, ListenerSearchEvents } from "../utils/filterRecipes.js";
 import { ClearButtonMainSearch } from "../utils/ClearButtonMainSearch.js";
 import { FilterBySelectedItems } from "../utils/filterBySelectedItems.js";
+import { filterItems } from "../utils/filterItems.js";
 
 const recipesApi = new Api("./data/recipes.json");
 
@@ -44,3 +45,4 @@ selectItem();
 createTag();
 deleteTag();
 counterRecipes();
+filterItems();
