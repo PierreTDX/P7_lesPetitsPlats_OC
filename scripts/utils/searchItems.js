@@ -1,4 +1,5 @@
 export function searchItems() {
+    // Filtre les éléments de la liste en fonction de la valeur saisie.
     function handleSearchInput(event) {
         const searchInput = event.target;
         const searchValue = searchInput.value.toLowerCase();
@@ -15,6 +16,7 @@ export function searchItems() {
         }
     }
 
+    // Affiche ou cache le bouton de croix de suppression en fonction de la présence d'une valeur dans le champ de recherche.
     function toggleClearButtonVisibility(searchInput) {
         const clearButton = searchInput.closest('.zoneMenu').querySelector('.miniCross');
         if (clearButton) {
@@ -22,17 +24,19 @@ export function searchItems() {
         }
     }
 
+    // Réinitialise les champs de recherche de tous les menus lors de la sélection d'un élément.
     function handleItemClick(event) {
         const item = event.target;
         if (item.classList.contains('list')) {
             // Sélectionner tous les champs de recherche dans les menus
             document.querySelectorAll('.searchSelect').forEach(searchInput => {
-                searchInput.value = ''; // Vider le champ de recherche
+                searchInput.value = ''; // Vider les champs de recherche
                 handleSearchInput({ target: searchInput }); // Réinitialiser l'affichage de la liste
             });
         }
     }
 
+    // Vide le champ de recherche associé et réinitialise l'affichage de la liste
     function handleClearClick(event) {
         const clearButton = event.target;
         if (clearButton.classList.contains('miniCross')) {
@@ -44,14 +48,15 @@ export function searchItems() {
         }
     }
 
+    // Empêche l'action par défaut lors de l'appui sur la touche 'Enter' dans les champs de recherche
     function handleKeyDown(event) {
         if (event.key === 'Enter') {
             event.preventDefault(); // Empêcher le comportement par défaut
         }
     }
 
+    // Vide les champs de recherche si le clic se produit en dehors de la zone du menu.
     function handleClickOutside(event) {
-        // Si le clic est en dehors de la zoneMenu et de l'input de recherche, vider l'input
         const searchInputs = document.querySelectorAll('.searchSelect');
         searchInputs.forEach(input => {
             const zoneMenu = input.closest('.zoneMenu');
