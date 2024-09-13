@@ -28,7 +28,7 @@ async function init() {
         // Ecouter les événements de recherche
         ListenerSearchEvents(recipesData);
 
-
+        FilterBySelectedItems();
 
     } catch (error) {
         console.error("Erreur lors de l'initialisation de l'application :", error);
@@ -44,6 +44,3 @@ selectItem();
 createTag();
 deleteTag();
 counterRecipes();
-
-// Configurer les événements de filtrage par éléments sélectionnés
-// FilterBySelectedItems();

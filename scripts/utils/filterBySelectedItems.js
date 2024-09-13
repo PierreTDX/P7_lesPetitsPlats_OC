@@ -1,16 +1,11 @@
-import { recipesData } from "../pages/index.js";
 import { filteredRecipes } from "./filterRecipes.js";
 import { updateRecipeDisplay } from "./filterRecipes.js";
 
 // Fonction pour filtrer les recettes en fonction des éléments sélectionnés
 export function FilterBySelectedItems() {
-    console.log("Recettes si pas de 1er tri :", recipesData);
     console.log("Recettes filtrées au 1er tri :", filteredRecipes);
 
-    // Choisir la source de données en fonction de l'état de filteredRecipes
-    const recipesToFilter = filteredRecipes.length > 0 ? filteredRecipes : recipesData;
-
-    // Récupérer les éléments sélectionnés dans chaque menu
+    // Utiliser directement filteredRecipes pour appliquer le filtre des éléments sélectionnés
     const selectedIngredients = Array.from(document.querySelectorAll('.zoneSelecteds.ingredients .selectedWord')).map(elem => elem.textContent.toLowerCase());
     const selectedAppliances = Array.from(document.querySelectorAll('.zoneSelecteds.appliance .selectedWord')).map(elem => elem.textContent.toLowerCase());
     const selectedUstensils = Array.from(document.querySelectorAll('.zoneSelecteds.ustensils .selectedWord')).map(elem => elem.textContent.toLowerCase());
@@ -19,7 +14,7 @@ export function FilterBySelectedItems() {
     console.log("ustensiles sélectionnés", selectedUstensils);
 
     // Filtrer les recettes en fonction des éléments sélectionnés
-    const filteredBySelectedItems = recipesToFilter.filter(recipe => {
+    const filteredBySelectedItems = filteredRecipes.filter(recipe => {
         const ingredients = recipe.ingredients.map(ing => ing.ingredient.toLowerCase());
         const appliance = recipe.appliance.toLowerCase();
         const ustensils = recipe.ustensils.map(ust => ust.toLowerCase());
@@ -34,9 +29,10 @@ export function FilterBySelectedItems() {
 
     console.log("Recettes filtrées après le second tri :", filteredBySelectedItems);
 
-    // Mettre à jour l'affichage avec les recettes filtrées
+    // Toujours mettre à jour l'affichage avec les recettes filtrées après le deuxième tri
     updateRecipeDisplay(filteredBySelectedItems);
 }
+
 
 // Fonction pour configurer le MutationObserver sur les zoneSelecteds
 function observeZoneSelecteds() {

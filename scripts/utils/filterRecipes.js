@@ -48,15 +48,19 @@ export function updateRecipeDisplay(recipes) {
 export function handleSearchInput(event, allRecipes) {
     const query = event.target.value.trim();
     if (query.length >= 3) {
-        const filteredRecipes = filterRecipes(allRecipes, query);
-        console.log("dans handleSearchInput filteredRecipes",filteredRecipes);
+        // Filtrer les recettes en fonction de la recherche
+        filteredRecipes = filterRecipes(allRecipes, query);
+        console.log("dans handleSearchInput filteredRecipes", filteredRecipes);
 
-        // FilterBySelectedItems();
-        updateRecipeDisplay(filteredRecipes);
+        // Appliquer le filtre par les éléments sélectionnés après le filtrage de la recherche
+        FilterBySelectedItems(); 
 
     } else {
-        // FilterBySelectedItems();
-        updateRecipeDisplay(allRecipes);
+        // Réinitialiser les recettes filtrées à toutes les recettes
+        filteredRecipes = [...allRecipes];
+
+        // Appliquer le filtre par les éléments sélectionnés même si la recherche est vide
+        FilterBySelectedItems(); 
     }
 }
 
