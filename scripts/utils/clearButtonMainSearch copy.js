@@ -28,5 +28,3 @@ export function clearButtonMainSearch() {
         searchInput.dispatchEvent(event);
     });
 }
-
-
