@@ -8,63 +8,31 @@ export let filteredRecipes = [];
 // Fonction pour filtrer les recettes en fonction de la recherche
 function filterRecipes(recipes, query) {
     console.log("début filterRecipes", recipes);
+    const queryWords = query.toLowerCase().split(" ").filter(function(word) {
+        return word.length >= 3; // Ne garder que les mots de 3 caractères ou plus
+    });
 
-    // Convertir la requête en mots, en gardant ceux de 3 caractères ou plus
-    const queryWords = [];
-    const words = query.toLowerCase().split(" ");
-    let i = 0;
+    filteredRecipes = recipes.filter(function(recipe) {
+        const name = recipe.name.toLowerCase();
+        const description = recipe.description.toLowerCase();
+        const ingredients = recipe.ingredients.map(function(ing) {
+            return ing.ingredient.toLowerCase();
+        }).join(' ');
 
-    while (i < words.length) {
-        if (words[i].length >= 3) {
-            queryWords.push(words[i]);
-        }
-        i++;
-    }
+        const appliance = recipe.appliance.toLowerCase();
+        const ustensils = recipe.ustensils.map(function(ust) {
+            return ust.toLowerCase();
+        }).join(' ');
 
-    // Filtrer les recettes
-    filteredRecipes = [];
-    let j = 0;
-
-    while (j < recipes.length) {
-        const recipe = recipes[j];
-        const name = recipe.name ? recipe.name.toLowerCase() : '';
-        const description = recipe.description ? recipe.description.toLowerCase() : '';
-        let ingredients = '';
-        let k = 0;
-
-        while (k < recipe.ingredients.length) {
-            ingredients += recipe.ingredients[k].ingredient.toLowerCase() + ' ';
-            k++;
-        }
-
-        const appliance = recipe.appliance ? recipe.appliance.toLowerCase() : '';
-        let ustensils = '';
-        let l = 0;
-
-        while (l < recipe.ustensils.length) {
-            ustensils += recipe.ustensils[l].toLowerCase() + ' ';
-            l++;
-        }
-
-        let allWordsMatch = true;
-        let m = 0;
-
-        while (m < queryWords.length) {
-            const word = queryWords[m];
-            if (!(name.includes(word) || description.includes(word) ||
-                ingredients.includes(word) || appliance.includes(word) || ustensils.includes(word))) {
-                allWordsMatch = false;
-                break;
-            }
-            m++;
-        }
-
-        if (allWordsMatch) {
-            filteredRecipes.push(recipe);
-        }
-
-        j++;
-    }
+        // Vérifier si tous les mots de la requête sont présents dans les champs de la recette
+        return queryWords.every(function(word) {
+            return name.includes(word) ||
+                   description.includes(word) ||
+                   ingredients.includes(word) ||
+                   appliance.includes(word) ||
+                   ustensils.includes(word);
+        });
+    });
 
     console.log("fin filterRecipes", filteredRecipes);
     return filteredRecipes;
