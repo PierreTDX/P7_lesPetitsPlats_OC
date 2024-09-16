@@ -6,7 +6,7 @@ import { FilterBySelectedItems } from "./filterBySelectedItems.js";
 export let filteredRecipes = [];
 
 // Fonction pour filtrer les recettes en fonction de la recherche
-export function filterRecipes(recipes, query) {
+function filterRecipes(recipes, query) {
     console.log("début filterRecipes", recipes);
 
     // Convertir la requête en mots, en gardant ceux de 3 caractères ou plus
