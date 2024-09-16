@@ -81,6 +81,18 @@ h1 {
     /* max-width: 1440px; à activer si*/
 }
 
+.noResult {
+    display: none;
+    margin-left: 100px;
+    font-family: 'Anton';
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.noResult.visible {
+    display: block;
+}
+
 /* Pour les écrans plus petits */
 @media (max-width: 828px) {
     .zoneSelectsAndText{
