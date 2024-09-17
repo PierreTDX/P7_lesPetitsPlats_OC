@@ -84,7 +84,7 @@ h1 {
 .noResult {
     display: none;
     margin-left: 100px;
-    font-family: 'Anton';
+    margin-right: 100px;
     font-size: 21px;
     font-weight: 400;
 }
@@ -106,5 +106,10 @@ h1 {
         margin-left: 10px;
         margin-right: 10px;
   
+    }
+
+    .noResult {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
