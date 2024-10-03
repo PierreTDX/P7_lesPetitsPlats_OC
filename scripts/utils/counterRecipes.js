@@ -1,10 +1,13 @@
+import { clearInput } from "./clearInput.js";
+import { mylog } from "../params/handleConsoleLog.js";
+
 export function counterRecipes() {
     let recipeCount = 0;
 
     const updateCount = () => {
         // Sélectionne tous les éléments <article>
         const articles = document.querySelectorAll('section.zoneCartes article');
-        console.log('Articles trouvés :', articles); // Vérifie les articles trouvés
+        mylog('Articles trouvés :', articles); // Vérifie les articles trouvés
 
         // Compte le nombre d'articles
         recipeCount = articles.length; // Stocke le nombre d'articles
@@ -47,7 +50,10 @@ export function counterRecipes() {
         const searchInput = document.querySelector('#mainsearch');
 
         if (noResultElement && searchInput) {
-            const searchValue = searchInput.value.trim(); // Assure-toi d'enlever les espaces inutiles
+            let searchValue = searchInput.value.trim(); // Assure-toi d'enlever les espaces inutiles
+
+            // Désinfecter l'entrée utilisateur avant de l'afficher
+            searchValue = clearInput(searchValue);
 
             if (recipeCount === 0 && searchValue) {
                 noResultElement.classList.add('visible');

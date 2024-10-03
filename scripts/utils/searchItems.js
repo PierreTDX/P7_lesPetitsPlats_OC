@@ -1,21 +1,24 @@
+import { removeAccents } from "./removeAccents.js";
+
 export function searchItems() {
     // Filtre les éléments de la liste en fonction de la valeur saisie.
     function handleSearchInput(event) {
         const searchInput = event.target;
-        const searchValue = searchInput.value.toLowerCase();
+        const searchValue = removeAccents(searchInput.value.toLowerCase()); // Utilisation de removeAccents ici
         const listZone = searchInput.closest('.zoneMenu').querySelector('.zoneList');
         
         if (listZone) {
             const items = listZone.querySelectorAll('.list');
             items.forEach(item => {
-                item.style.display = item.textContent.toLowerCase().includes(searchValue) ? '' : 'none';
+                // Utiliser removeAccents pour comparer le texte sans accents
+                const itemText = removeAccents(item.textContent.toLowerCase());
+                item.style.display = itemText.includes(searchValue) ? '' : 'none';
             });
 
             // Appeler la fonction pour gérer l'affichage de la croix
             toggleClearButtonVisibility(searchInput);
         }
     }
-
     // Affiche ou cache le bouton de croix de suppression en fonction de la présence d'une valeur dans le champ de recherche.
     function toggleClearButtonVisibility(searchInput) {
         const clearButton = searchInput.closest('.zoneMenu').querySelector('.miniCross');

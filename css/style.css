@@ -74,10 +74,10 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     gap : 66px 48px;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 200px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
     /* max-width: 1440px; à activer si*/
 }
 
@@ -112,4 +112,10 @@ h1 {
         margin-left: 10px;
         margin-right: 10px;
     }
+
+    .zoneCartes {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
 }

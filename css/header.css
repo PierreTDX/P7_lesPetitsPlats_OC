@@ -112,3 +112,10 @@ button:hover {
         padding-left: 10px;
     }
 }
+
+@media (max-width: 768px) {
+
+    .formSearch {
+        width: 95%;
+    }
+}

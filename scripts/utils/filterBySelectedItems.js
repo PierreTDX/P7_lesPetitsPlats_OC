@@ -1,17 +1,19 @@
 import { filteredRecipes } from "./filterRecipes.js";
 import { updateRecipeDisplay } from "./filterRecipes.js";
+import { mylog } from "../params/handleConsoleLog.js";
+
 
 // Fonction pour filtrer les recettes en fonction des éléments sélectionnés
 export function FilterBySelectedItems() {
-    console.log("Recettes filtrées au 1er tri :", filteredRecipes);
+    mylog("Recettes filtrées au 1er tri :", filteredRecipes);
 
     // Utiliser directement filteredRecipes pour appliquer le filtre des éléments sélectionnés
     const selectedIngredients = Array.from(document.querySelectorAll('.zoneSelecteds.ingredients .selectedWord')).map(elem => elem.textContent.toLowerCase());
     const selectedAppliances = Array.from(document.querySelectorAll('.zoneSelecteds.appliance .selectedWord')).map(elem => elem.textContent.toLowerCase());
     const selectedUstensils = Array.from(document.querySelectorAll('.zoneSelecteds.ustensils .selectedWord')).map(elem => elem.textContent.toLowerCase());
-    console.log("ingrédients sélectionnés", selectedIngredients);
-    console.log("appareils sélectionnés", selectedAppliances);
-    console.log("ustensiles sélectionnés", selectedUstensils);
+    mylog("ingrédients sélectionnés", selectedIngredients);
+    mylog("appareils sélectionnés", selectedAppliances);
+    mylog("ustensiles sélectionnés", selectedUstensils);
 
     // Filtrer les recettes en fonction des éléments sélectionnés
     const filteredBySelectedItems = filteredRecipes.filter(recipe => {
@@ -27,7 +29,7 @@ export function FilterBySelectedItems() {
         return containsAllIngredients && containsAllAppliances && containsAllUstensils;
     });
 
-    console.log("Recettes filtrées après le second tri :", filteredBySelectedItems);
+    mylog("Recettes filtrées après le second tri :", filteredBySelectedItems);
 
     // Toujours mettre à jour l'affichage avec les recettes filtrées après le deuxième tri
     updateRecipeDisplay(filteredBySelectedItems);
@@ -45,7 +47,7 @@ function observeZoneSelecteds() {
         mutationsList.forEach(mutation => {
             if (mutation.type === 'childList') {
                 // Un ou plusieurs enfants ont été ajoutés ou supprimés
-                console.log('Changements détectés dans zoneSelecteds.');
+                mylog('Changements détectés dans zoneSelecteds.');
                 FilterBySelectedItems();
             }
         });

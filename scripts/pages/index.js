@@ -8,18 +8,19 @@ import { clearButtonMainSearch } from "../utils/clearButtonMainSearch.js";
 import { handleSearchInput, ListenerSearchEvents } from "../utils/filterRecipes.js";
 import { FilterBySelectedItems } from "../utils/filterBySelectedItems.js";
 import { searchItems } from "../utils/searchItems.js";
+import { mylog } from "../params/handleConsoleLog.js";
 
 const recipesApi = new Api("./data/recipes.json");
 
 export let recipesData = [];
-console.log("avant init index.js", recipesData);
+mylog("avant init index.js", recipesData);
 
 
 // Fonction d'initialisation de l'application
 async function init() {
     try {
         recipesData = await recipesApi.get();
-        console.log("début init index.js", recipesData);
+        mylog("début init index.js", recipesData);
 
         clearButtonMainSearch();
 

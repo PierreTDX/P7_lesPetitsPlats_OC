@@ -1,42 +1,49 @@
 import { createRecipeArticles } from "../templates/createRecipeArcticles.js";
 import { populateZoneLists } from "./populateZoneLists.js";
 import { FilterBySelectedItems } from "./filterBySelectedItems.js";
+import { clearInput } from "./clearInput.js";
+import { removeAccents } from "./removeAccents.js";
+import { mylog } from "../params/handleConsoleLog.js";
+
 
 // Exporter la variable filteredRecipes
 export let filteredRecipes = [];
 
 // Fonction pour filtrer les recettes en fonction de la recherche
 function filterRecipes(recipes, query) {
-    console.log("début filterRecipes", recipes);
-    const queryWords = query.toLowerCase().split(" ").filter(function(word) {
-        return word.length >= 3; // Ne garder que les mots de 3 caractères ou plus
-    });
+    mylog("Début filterRecipes", recipes);
+    
+    const clearQuery = clearInput(query); // Désinfecter l'entrée utilisateur
+    const normalizedQuery = removeAccents(clearQuery).toLowerCase();
+    const queryWords = normalizedQuery
+        .split(" ")
+        .filter(word => word.length >= 3); // Ne garder que les mots de 3 caractères ou plus
 
-    filteredRecipes = recipes.filter(function(recipe) {
-        const name = recipe.name.toLowerCase();
-        const description = recipe.description.toLowerCase();
-        const ingredients = recipe.ingredients.map(function(ing) {
-            return ing.ingredient.toLowerCase();
-        }).join(' ');
-
-        const appliance = recipe.appliance.toLowerCase();
-        const ustensils = recipe.ustensils.map(function(ust) {
-            return ust.toLowerCase();
-        }).join(' ');
+    filteredRecipes = recipes.filter(recipe => {
+        const name = removeAccents(recipe.name).toLowerCase();
+        const description = removeAccents(recipe.description).toLowerCase();
+        const ingredients = recipe.ingredients
+            .map(ing => removeAccents(ing.ingredient).toLowerCase())
+            .join(' ');
+        const appliance = removeAccents(recipe.appliance).toLowerCase();
+        const ustensils = recipe.ustensils
+            .map(ust => removeAccents(ust).toLowerCase())
+            .join(' ');
 
         // Vérifier si tous les mots de la requête sont présents dans les champs de la recette
-        return queryWords.every(function(word) {
-            return name.includes(word) ||
-                   description.includes(word) ||
-                   ingredients.includes(word) ||
-                   appliance.includes(word) ||
-                   ustensils.includes(word);
-        });
+        return queryWords.every(word => 
+            name.includes(word) ||
+            description.includes(word) ||
+            ingredients.includes(word) ||
+            appliance.includes(word) ||
+            ustensils.includes(word)
+        );
     });
 
-    console.log("fin filterRecipes", filteredRecipes);
+    mylog("Fin filterRecipes", filteredRecipes);
     return filteredRecipes;
 }
+
 
 // Fonction pour mettre à jour l'affichage des recettes et des listes
 export function updateRecipeDisplay(recipes) {
@@ -50,7 +57,7 @@ export function handleSearchInput(event, allRecipes) {
     if (query.length >= 3) {
         // Filtrer les recettes en fonction de la recherche
         filteredRecipes = filterRecipes(allRecipes, query);
-        console.log("dans handleSearchInput filteredRecipes", filteredRecipes);
+        mylog("dans handleSearchInput filteredRecipes", filteredRecipes);
 
         // Appliquer le filtre par les éléments sélectionnés après le filtrage de la recherche
         FilterBySelectedItems();
@@ -79,3 +86,4 @@ export function ListenerSearchEvents(recipesData) {
         handleSearchInput({ target: searchInput }, recipesData); // Effectuer la recherche sur la soumission
     });
 }
+
