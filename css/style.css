@@ -73,7 +73,7 @@ h1 {
 .zoneCartes {
     display: flex;
     flex-wrap: wrap;
-    gap : 66px 48px;
+    gap : 66px 20px;
     justify-content: space-between;
     margin-bottom: 200px;
     margin-left: 100px;
